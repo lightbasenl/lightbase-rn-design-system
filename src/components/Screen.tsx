@@ -1,5 +1,5 @@
 import { useNavigation } from "@react-navigation/native";
-import type { NativeStackNavigationOptions } from "@react-navigation/native-stack";
+import { NativeStackNavigationOptions } from "@react-navigation/native-stack";
 import { useGetBottomTabBarHeight, useGetHeaderHeight } from "hooks/useGetNavigationHeights";
 import { useInternalTheme } from "hooks/useInternalTheme";
 import { AnimatedFlatListBox, AnimatedFlatListBoxProps } from "primitives/Box/AnimatedFlatListBox";
@@ -11,8 +11,8 @@ import { ScrollViewBox, ScrollViewBoxProps } from "primitives/Box/ScrollViewBox"
 import { SectionListBox, SectionListBoxProps } from "primitives/Box/SectionListBox";
 import React, { ForwardedRef, forwardRef, ReactNode, RefObject, ReactElement, useLayoutEffect } from "react";
 import { FlatList, ScrollView, SectionList, StyleSheet, View } from "react-native";
-import type Animated from "react-native-reanimated";
-import type { Edge, SafeAreaViewProps } from "react-native-safe-area-context";
+import Animated from "react-native-reanimated";
+import { Edge, SafeAreaViewProps } from "react-native-safe-area-context";
 
 export type ScreenBaseProps = {
   options?: NativeStackNavigationOptions;
@@ -26,38 +26,19 @@ type ScreenProps<T, S> = ScreenBaseProps &
   (
     | ({ as?: "View"; ref?: RefObject<View> } & BoxProps)
     | ({ as: "ScrollView"; ref?: RefObject<ScrollView> } & ScrollViewBoxProps)
-    | ({
-        as: "AnimatedScrollView";
-        ref?: RefObject<Animated.ScrollView>;
-      } & AnimatedScrollViewBoxProps)
+    | ({ as: "AnimatedScrollView"; ref?: RefObject<Animated.ScrollView> } & AnimatedScrollViewBoxProps)
     | ({ as: "FlatList"; ref?: RefObject<FlatList> } & FlatListBoxProps<T>)
-    | ({
-        as: "AnimatedFlatList";
-        ref?: RefObject<Animated.FlatList<T>>;
-      } & AnimatedFlatListBoxProps<T>)
-    | ({
-        as: "SectionList";
-        ref?: RefObject<SectionList<T, S>>;
-      } & SectionListBoxProps<T, S>)
+    | ({ as: "AnimatedFlatList"; ref?: RefObject<Animated.FlatList<T>> } & AnimatedFlatListBoxProps<T>)
+    | ({ as: "SectionList"; ref?: RefObject<SectionList<T, S>> } & SectionListBoxProps<T, S>)
   );
 
 interface ScreenComponentType {
   <T, S = any>(props: ScreenProps<T, S>, ref: ForwardedRef<any>): JSX.Element;
 }
 
-// const getNavigationOptions = () => {
-//   if (navigationRef.isReady()) {
-//     return navigationRef.getCurrentOptions() as
-//       | Partial<NativeStackNavigationOptions>
-//       | undefined;
-//   }
-//   return {} as Partial<NativeStackNavigationOptions>;
-// };
-
 export const Screen = forwardRef(function Screen<T, S = any>(p: ScreenProps<T, S>, ref: ForwardedRef<any>) {
   const { defaults } = useInternalTheme();
   const navigation = useNavigation();
-
   const combinedProps = { ...defaults.Screen, ...p };
   const { options, mode, edges, backgroundComponent, backgroundColor, absolutePositionedTabBar, ...props } =
     combinedProps;

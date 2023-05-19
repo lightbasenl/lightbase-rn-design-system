@@ -1,8 +1,8 @@
 import { useInternalTheme } from "hooks/useInternalTheme";
 import React, { Fragment, ReactElement, ReactNode } from "react";
-import type { ViewProps, ViewStyle } from "react-native";
+import { ViewProps, ViewStyle } from "react-native";
 import { getValidChildren } from "tools/getValidChildren";
-import type { SpaceKey, Spacing } from "types";
+import { SpaceKey, Spacing } from "types";
 
 import { Box } from "./Box/Box";
 
@@ -65,25 +65,16 @@ export function Row({
   const validChildren = getValidChildren(children);
 
   const resolveToken = (value: Spacing) => {
-    if (theme.config.spacing == null) {
-      throw new Error("Spacing config not defiend");
-    }
     if (typeof value === "object") {
       if (typeof value.custom === "string") {
         return value.custom;
       }
-      if (value.custom != null) {
-        return value.custom;
+      if (value.custom == null) {
+        return undefined;
       }
+      return value.custom;
     }
-    if (typeof value !== "string") {
-      return undefined;
-    }
-    const spacingValue = theme.config.spacing?.[value.replace("-", "") as SpaceKey];
-    if (spacingValue == null) {
-      return undefined;
-    }
-    return -1 * spacingValue;
+    return -1 * theme.config.spacing[value?.replace("-", "") as SpaceKey];
   };
 
   const verticalSpace = verticalSpaceProp ?? space;

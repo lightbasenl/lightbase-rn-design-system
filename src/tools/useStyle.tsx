@@ -1,5 +1,5 @@
 import { DependencyList, useMemo } from "react";
-import type { StyleProp, ViewStyle } from "react-native";
+import { StyleProp, ViewStyle } from "react-native";
 
 export type RemoveStyle<T> = Omit<T, "style">;
 

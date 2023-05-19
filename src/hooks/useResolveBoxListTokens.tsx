@@ -1,9 +1,9 @@
 import { useInternalTheme } from "hooks/useInternalTheme";
 import mapValues from "lodash.mapvalues";
-import type { BoxProps } from "primitives/Box/Box";
-import type { StyleProp } from "react-native";
+import { BoxProps } from "primitives/Box/Box";
+import { StyleProp } from "react-native";
 import { mapMarginValue, mapPaddingValues } from "tools/mapValues";
-import type { MarginStyles, PaddingStyles, RadiusStyles } from "types";
+import { MarginStyles, PaddingStyles, RadiusStyles } from "types";
 
 export type RemoveStyles<T> = Omit<T, "contentContainerStyle" | "style">;
 export type FilterStyles<T> = StyleProp<
@@ -76,6 +76,7 @@ export function useResolveBoxListTokens<T extends ScrollableBoxProps>(props: T) 
     },
     theme.config.spacing
   );
+
   const colorValues = mapValues({ backgroundColor }, (value) => {
     if (typeof value === "object") {
       return value.custom;
@@ -83,7 +84,6 @@ export function useResolveBoxListTokens<T extends ScrollableBoxProps>(props: T) 
     if (typeof value === "string") {
       return theme.colors[value];
     }
-    return undefined;
   });
 
   const borderRadiusValues = mapValues(
@@ -102,17 +102,11 @@ export function useResolveBoxListTokens<T extends ScrollableBoxProps>(props: T) 
       if (typeof value === "string") {
         return theme.config.radius[value];
       }
-      return undefined;
     }
   );
 
   const contentContainerStyles = { flexGrow: flex, ...paddingValues };
-  const styles = {
-    flex,
-    ...borderRadiusValues,
-    ...colorValues,
-    ...marginValues,
-  };
+  const styles = { flex, ...borderRadiusValues, ...colorValues, ...marginValues };
 
   return { contentContainerStyles, styles, ...rest };
 }

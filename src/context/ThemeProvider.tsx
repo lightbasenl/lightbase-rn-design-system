@@ -1,6 +1,5 @@
 import React, { ReactNode } from "react";
 import type { Theme } from "types";
-// import type { CustomTheme } from "../../example/theme.config";
 
 export const ThemeContext = React.createContext<Theme | null>(null);
 

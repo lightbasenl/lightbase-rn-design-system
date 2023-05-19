@@ -1,8 +1,8 @@
 import tinycolor from "@ctrl/tinycolor";
-import type { ButtonProps, Variants } from "components/Button";
-import type { TextProps } from "components/Text";
+import { ButtonProps, Variants } from "components/Button";
+import { TextProps } from "components/Text";
 import { merge } from "lodash";
-import type { ColorThemeKeys, DefaultButton } from "types";
+import { ColorThemeKeys, DefaultButton } from "types";
 
 export type ButtonVariants = "solid" | "soft" | "outline" | "link" | "icon" | "unstyled";
 
@@ -47,9 +47,7 @@ export function getButtonVariants({
       width: "100%",
     },
     soft: {
-      backgroundColor: {
-        custom: tinycolor(resolveThemeColor(themeColor)).tint(85).toHexString(),
-      },
+      backgroundColor: { custom: tinycolor(resolveThemeColor(themeColor)).tint(85).toHexString() },
       textColor: themeColor,
       borderWidth: 1,
       width: "100%",

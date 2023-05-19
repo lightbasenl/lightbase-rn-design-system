@@ -6,7 +6,7 @@ import {
   useResolveBoxListTokens,
 } from "hooks/useResolveBoxListTokens";
 import React, { ForwardedRef, forwardRef, useContext } from "react";
-import type { FlatListProps as RNFlatListProps } from "react-native";
+import { FlatListProps as RNFlatListProps } from "react-native";
 import Animated, { AnimateProps } from "react-native-reanimated";
 
 type FlatListProps<T> = RemoveStyles<RNFlatListProps<T>> & {

@@ -1,6 +1,6 @@
 import React, { Fragment, isValidElement, ReactElement, ReactNode } from "react";
 import { getValidChildren } from "tools/getValidChildren";
-import type { Spacing } from "types";
+import { Spacing } from "types";
 
 import { Box } from "./Box/Box";
 

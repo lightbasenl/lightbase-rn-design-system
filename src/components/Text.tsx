@@ -3,7 +3,7 @@ import * as React from "react";
 import { Platform, Text as RNText, TextProps as RNTextProps, TextStyle } from "react-native";
 import Animated from "react-native-reanimated";
 import { getFontStyles, getTextDecoration } from "theme/typography";
-import type { ColorThemeKeys, FontSizes, FontTypesAndWeights, FontVariantsAndWeights } from "types";
+import { ColorThemeKeys, FontSizes, FontTypesAndWeights, FontVariantsAndWeights } from "types";
 
 export type TextProps = RNTextProps & {
   color?: ColorThemeKeys;

@@ -6,7 +6,7 @@ import {
   useResolveBoxListTokens,
 } from "hooks/useResolveBoxListTokens";
 import React, { ForwardedRef, forwardRef, useContext } from "react";
-import type { ScrollViewProps as RNScrollViewProps } from "react-native";
+import { ScrollViewProps as RNScrollViewProps } from "react-native";
 import Animated, { AnimateProps } from "react-native-reanimated";
 
 type ScrollViewProps = RemoveStyles<RNScrollViewProps> & {

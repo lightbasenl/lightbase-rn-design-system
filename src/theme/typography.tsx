@@ -1,7 +1,7 @@
 import { FontMetrics, precomputeValues } from "@capsizecss/core";
 import { PixelRatio, StyleProp, StyleSheet, TextStyle } from "react-native";
 
-import type { FontSizes, FontType, FontWeights, ThemeConfig } from "../types";
+import { FontSizes, FontType, FontWeights, ThemeConfig } from "../types";
 
 const capsize = (options: Parameters<typeof precomputeValues>[0]) => {
   const values = precomputeValues(options);
@@ -36,11 +36,23 @@ export const createTextSize = ({
   } as const;
 };
 
+export const weights = {
+  hairline: "100",
+  thin: "200",
+  light: "300",
+  normal: "400",
+  medium: "500",
+  semibold: "600",
+  bold: "700",
+  heavy: "800",
+  black: "900",
+} as const;
+
 type GetFontStyles = {
   italic?: boolean;
   size: FontSizes;
-  weight?: FontWeights;
-  type?: FontType;
+  weight: FontWeights;
+  type: FontType;
   config: ThemeConfig;
   style: StyleProp<TextStyle>;
   ignoreTrimming?: boolean;
@@ -49,10 +61,6 @@ type GetFontStyles = {
 export function getFontStyles({ weight, type, size, italic, config, style, ignoreTrimming }: GetFontStyles) {
   const fontConfig = config.typography.fontConfig;
   const styles = StyleSheet.flatten(style);
-
-  if (type == null || weight == null) {
-    throw new Error("Font config not defiend");
-  }
   // @ts-ignore
   const fontFamily = italic ? fontConfig?.[type]?.[weight]?.italic : fontConfig?.[type]?.[weight]?.normal;
   if (!fontFamily) {
@@ -62,9 +70,6 @@ export function getFontStyles({ weight, type, size, italic, config, style, ignor
   // Adjust the top and bottom margins of the text blocks using Capsize
   const metrics = config.typography.fontMetrics[type];
   const sizes = config.typography.sizes[size];
-  if (!sizes) {
-    throw new Error("Theme config has no sizes defined");
-  }
 
   if (ignoreTrimming) {
     // we can ignore the capsize cap trimming entirely by passing in the above flag.
@@ -75,8 +80,8 @@ export function getFontStyles({ weight, type, size, italic, config, style, ignor
   if (metrics) {
     const Fontsizes = createTextSize({
       fontMetrics: metrics,
-      fontSize: styles?.fontSize ?? sizes.fontSize,
-      lineHeight: styles?.lineHeight ?? sizes.lineHeight,
+      fontSize: styles?.fontSize ?? config.typography?.sizes?.[size].fontSize,
+      lineHeight: styles?.lineHeight ?? config.typography?.sizes?.[size].lineHeight,
     });
     return { fontFamily, ...Fontsizes };
   }

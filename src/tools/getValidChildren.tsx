@@ -1,4 +1,4 @@
-import React, { Children, isValidElement } from "react";
+import { Children, isValidElement, ReactNode } from "react";
 import flattenChildren from "react-keyed-flatten-children";
 
 /**
@@ -7,7 +7,7 @@ import flattenChildren from "react-keyed-flatten-children";
  *
  * @param children the children
  */
-export function getValidChildren(children: React.ReactNode) {
+export function getValidChildren(children: ReactNode) {
   return Children.toArray(flattenChildren(children)).filter((child) =>
     isValidElement(child)
   ) as React.ReactElement[];

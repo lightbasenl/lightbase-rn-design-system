@@ -1,9 +1,9 @@
 import { useInternalTheme } from "hooks/useInternalTheme";
 import mapValues from "lodash.mapvalues";
-import type { ReactNode } from "react";
-import type { StyleProp, ViewStyle } from "react-native";
+import { ReactNode } from "react";
+import { StyleProp, ViewStyle } from "react-native";
 import { mapMarginValue, mapPaddingValues } from "tools/mapValues";
-import type {
+import {
   NegativeSpace,
   Spacing,
   SpacingStyles,
@@ -178,7 +178,6 @@ export function useResolveBoxTokens(props: BoxTokens) {
       if (typeof value === "string") {
         return theme.colors[value];
       }
-      return undefined;
     }
   );
 
@@ -199,7 +198,6 @@ export function useResolveBoxTokens(props: BoxTokens) {
       if (typeof value === "string") {
         return theme.config.radius[value];
       }
-      return undefined;
     }
   );
 

@@ -1,5 +1,5 @@
 import { useCallback } from "react";
-import type { ColorThemeKeys } from "types";
+import { ColorThemeKeys } from "types";
 
 import { useInternalTheme } from "./useInternalTheme";
 
