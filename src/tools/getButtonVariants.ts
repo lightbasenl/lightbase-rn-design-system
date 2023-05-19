@@ -1,7 +1,7 @@
 import tinycolor from "@ctrl/tinycolor";
 import { ButtonProps, Variants } from "components/Button";
 import { TextProps } from "components/Text";
-import { AppThemeConfig, ColorThemeKeys } from "types";
+import { ColorThemeKeys, DefaultButton } from "types";
 
 import { mergeDeepRight } from "./merge";
 
@@ -20,7 +20,7 @@ type Props = {
   parentBackGroundColor: string;
   resolveThemeColor: (color: ColorThemeKeys) => string;
   overrides: Partial<ButtonVariantProps>;
-  defaultProps: AppThemeConfig["defaults"]["Button"];
+  defaultProps: DefaultButton;
   variant: Variants;
 };
 export function getButtonVariants({

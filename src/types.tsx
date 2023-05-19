@@ -6,12 +6,30 @@ import type { BoxProps } from "primitives/Box/Box";
 import type { ViewStyle } from "react-native";
 import type { ButtonVariantProps } from "tools/getButtonVariants";
 
-interface CustomAppThemeconfig {}
-export interface AppThemeConfig<K extends string = string>
-  extends Omit<CreateThemeExtends<K>, keyof CustomAppThemeconfig>,
-    CustomAppThemeconfig {}
+declare global {
+  namespace LBDesignSystem {
+    interface LBTextVariants {}
+    interface LBThemeConfig {}
+    interface LBThemeColors {}
+    interface LBTheme {}
+  }
+}
 
-type CreateThemeConfigExtends = {
+export type TextVariants = keyof LBDesignSystem.LBTextVariants extends never
+  ? CreateTextVariantsExtends
+  : LBDesignSystem.LBTextVariants;
+
+export type ThemeConfig = keyof LBDesignSystem.LBThemeConfig extends never
+  ? CreateThemeConfigExtends
+  : LBDesignSystem.LBThemeConfig;
+
+export type ThemeColors = keyof LBDesignSystem.LBThemeColors extends never
+  ? CreateThemeColors<string>
+  : LBDesignSystem.LBThemeColors;
+
+export type Theme = keyof LBDesignSystem.LBTheme extends never ? CreateThemeExtends : LBDesignSystem.LBTheme;
+
+export type CreateThemeConfigExtends = {
   spacing: Record<string, number>;
   radius: Record<string, number>;
   typography: {
@@ -20,34 +38,31 @@ type CreateThemeConfigExtends = {
     fontConfig: Record<string, Partial<Record<FontWeights, { normal: string; italic?: string }>>>;
   };
 };
+export interface CreateThemeExtends {
+  defaults: CreateDefaultsExtends;
+  colors: CreateThemeColors<string>;
+  config: CreateThemeConfigExtends;
+  variants: { Text: CreateTextVariantsExtends; Button: Partial<ButtonVariantProps> };
+}
 
-type CreateThemeConfigVariants = {
-  Text: Record<string, FontTypesAndWeights & { size: FontSizes; color: ColorThemeKeys }>;
-  Button: Partial<ButtonVariantProps>;
-};
-
-type CreateDefaultsExtends = {
+export type CreateDefaultsExtends = {
   Button: DefaultButton;
   Text: Omit<TextProps, "children" | "variants"> & { variant: NonNullable<TextProps["variant"]> };
   Screen: Omit<BoxProps, "backgroundColor"> & { backgroundColor: ColorThemeKeys } & ScreenBaseProps;
 };
 
-type ThemeColorConfig<K extends string> = Record<K, string>;
-type CreateThemeColors<K extends string> = {
+export type CreateTextVariantsExtends = Record<
+  string,
+  FontTypesAndWeights & { size: FontSizes; color: ColorThemeKeys }
+>;
+
+export type ThemeColorConfig<K extends string> = Record<K, string>;
+export type CreateThemeColors<K extends string> = {
   dark?: Partial<ThemeColorConfig<K>>;
   light: ThemeColorConfig<K>;
 };
 
-interface CreateThemeExtends<K extends string = string> {
-  defaults: CreateDefaultsExtends;
-  colors: CreateThemeColors<K>;
-  config: CreateThemeConfigExtends;
-  variants: CreateThemeConfigVariants;
-}
-
-type TextVariants = CreateThemeExtends["variants"]["Text"];
-
-type DefaultButton = Omit<ButtonProps, "children" | "variants" | "themecolor"> & {
+export type DefaultButton = Omit<ButtonProps, "children" | "variants" | "themecolor"> & {
   variant: Variants;
   themeColor: ColorThemeKeys;
   textVariant: TextProps["variant"];
@@ -114,16 +129,16 @@ export type FontWeights =
   | "heavy"
   | "black";
 
-export type SpaceKey = keyof AppThemeConfig["config"]["spacing"];
+export type SpaceKey = keyof ThemeConfig["spacing"];
 export type Spacing = SpaceKey | { custom: ViewStyle["margin"] } | undefined;
 export type NegativeSpace = `-${SpaceKey}` | { custom: ViewStyle["margin"] } | undefined;
 
-export type ColorConfig = AppThemeConfig["colors"]["light"];
+export type ColorConfig = ThemeColors["light"];
 
 export type ColorThemeKeys = keyof ColorConfig | { custom: string };
-export type Radius = keyof AppThemeConfig["config"]["radius"] | { custom: number };
-export type FontSizes = keyof AppThemeConfig["config"]["typography"]["sizes"];
-export type FontType = keyof AppThemeConfig["config"]["typography"]["fontConfig"];
+export type Radius = keyof ThemeConfig["radius"] | { custom: number };
+export type FontSizes = keyof ThemeConfig["typography"]["sizes"];
+export type FontType = keyof ThemeConfig["typography"]["fontConfig"];
 
 type FontConfig = Record<FontType, Partial<Record<FontWeights, { normal: string; italic?: string }>>>;
 type Sizes = Record<FontSizes, { fontSize: number; lineHeight: number | undefined }>;
@@ -135,7 +150,7 @@ export type TypographyConfig = {
   sizes: Sizes;
 };
 
-export type FontSpecificWeights = AppThemeConfig["config"]["typography"]["fontConfig"];
+export type FontSpecificWeights = ThemeConfig["typography"]["fontConfig"];
 
 export type FontTypes<T extends string = never, S extends any = never> = T extends FontType
   ? S extends keyof FontSpecificWeights[T]

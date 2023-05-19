@@ -1,7 +1,7 @@
 import { FontMetrics, precomputeValues } from "@capsizecss/core";
 import { PixelRatio, StyleProp, StyleSheet, TextStyle } from "react-native";
 
-import { FontSizes, FontType, FontWeights, AppThemeConfig } from "../types";
+import { FontSizes, FontType, FontWeights, ThemeConfig } from "../types";
 
 const capsize = (options: Parameters<typeof precomputeValues>[0]) => {
   const values = precomputeValues(options);
@@ -53,7 +53,7 @@ type GetFontStyles = {
   size: FontSizes;
   weight: FontWeights;
   type: FontType;
-  config: AppThemeConfig["config"];
+  config: ThemeConfig;
   style: StyleProp<TextStyle>;
   ignoreTrimming?: boolean;
 };
