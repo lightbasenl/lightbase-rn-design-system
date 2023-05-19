@@ -1,8 +1,8 @@
 import tinycolor from "@ctrl/tinycolor";
-import type { ColorThemeKeys, DefaultButton } from "types";
 import type { ButtonProps, Variants } from "components/Button";
 import type { TextProps } from "components/Text";
 import { merge } from "lodash";
+import type { ColorThemeKeys, DefaultButton } from "types";
 
 export type ButtonVariants = "solid" | "soft" | "outline" | "link" | "icon" | "unstyled";
 

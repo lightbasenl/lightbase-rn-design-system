@@ -1,9 +1,9 @@
-import { BoxTokens, useResolveBoxTokens } from "hooks/useResolveBoxTokens";
-import type { RemoveStyle } from "tools/useStyle";
-import React, { forwardRef, useContext } from "react";
-import type { SafeAreaViewProps } from "react-native-safe-area-context";
 import { BackgroundContext } from "hooks/useBackgroundColor";
+import { BoxTokens, useResolveBoxTokens } from "hooks/useResolveBoxTokens";
+import React, { forwardRef, useContext } from "react";
 import { View } from "react-native";
+import type { SafeAreaViewProps } from "react-native-safe-area-context";
+import type { RemoveStyle } from "tools/useStyle";
 
 export type BoxProps = BoxTokens & RemoveStyle<SafeAreaViewProps>;
 export const Box = forwardRef<View, BoxProps>(({ style, children, ...props }, ref) => {

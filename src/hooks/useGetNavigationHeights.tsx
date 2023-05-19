@@ -4,10 +4,10 @@ import { useContext } from "react";
 
 export const useGetBottomTabBarHeight = () => {
   const bottom = useContext(BottomTabBarHeightContext);
-  return bottom || 0;
+  return bottom ?? 0;
 };
 
 export const useGetHeaderHeight = () => {
   const header = useHeaderHeight();
-  return header || 0;
+  return header ?? 0;
 };

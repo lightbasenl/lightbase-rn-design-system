@@ -1,5 +1,6 @@
-import type { ColorThemeKeys } from "types";
 import { useCallback } from "react";
+import type { ColorThemeKeys } from "types";
+
 import { useInternalTheme } from "./useInternalTheme";
 
 export function useResolveColorToken() {

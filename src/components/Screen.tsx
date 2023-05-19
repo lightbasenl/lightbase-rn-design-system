@@ -9,8 +9,7 @@ import { FlatListBox, FlatListBoxProps } from "primitives/Box/FlatListBox";
 import { SafeAreaBox } from "primitives/Box/SafeAreaBox";
 import { ScrollViewBox, ScrollViewBoxProps } from "primitives/Box/ScrollViewBox";
 import { SectionListBox, SectionListBoxProps } from "primitives/Box/SectionListBox";
-import React, { ForwardedRef, forwardRef, ReactNode, RefObject } from "react";
-import { ReactElement, useLayoutEffect } from "react";
+import React, { ForwardedRef, forwardRef, ReactNode, RefObject, ReactElement, useLayoutEffect } from "react";
 import { FlatList, ScrollView, SectionList, StyleSheet, View } from "react-native";
 import type Animated from "react-native-reanimated";
 import type { Edge, SafeAreaViewProps } from "react-native-safe-area-context";
@@ -18,7 +17,7 @@ import type { Edge, SafeAreaViewProps } from "react-native-safe-area-context";
 export type ScreenBaseProps = {
   options?: NativeStackNavigationOptions;
   mode?: SafeAreaViewProps["mode"];
-  edges?: ReadonlyArray<"top" | "bottom">;
+  edges?: readonly ("top" | "bottom")[];
   backgroundComponent?: ReactElement | null;
   absolutePositionedTabBar?: boolean;
 };
@@ -72,7 +71,7 @@ export const Screen = forwardRef(function Screen<T, S = any>(p: ScreenProps<T, S
   let headerHeight = useGetHeaderHeight();
   let bottomTabHeight = useGetBottomTabBarHeight();
 
-  let customEdges = ["left", "right"] as Edge[];
+  const customEdges = ["left", "right"] as Edge[];
   if (headerHeight === 0) {
     customEdges.push("top");
   }
@@ -131,7 +130,7 @@ export const Screen = forwardRef(function Screen<T, S = any>(p: ScreenProps<T, S
   }
 
   if (props.as === "FlatList") {
-    let { children, ListHeaderComponent, ListFooterComponent, ...rest } = props;
+    const { children, ListHeaderComponent, ListFooterComponent, ...rest } = props;
     return (
       <ScreenContainer {...containerprops}>
         <FlatListBox
@@ -160,7 +159,7 @@ export const Screen = forwardRef(function Screen<T, S = any>(p: ScreenProps<T, S
   }
 
   if (props.as === "AnimatedFlatList") {
-    let { children, ListHeaderComponent, ListFooterComponent, ...rest } = props;
+    const { children, ListHeaderComponent, ListFooterComponent, ...rest } = props;
     return (
       <ScreenContainer {...containerprops}>
         <AnimatedFlatListBox

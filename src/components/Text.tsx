@@ -1,8 +1,8 @@
+import { useInternalTheme } from "hooks/useInternalTheme";
 import * as React from "react";
 import { Platform, Text as RNText, TextProps as RNTextProps, TextStyle } from "react-native";
 import Animated from "react-native-reanimated";
 import { getFontStyles, getTextDecoration } from "theme/typography";
-import { useInternalTheme } from "hooks/useInternalTheme";
 import type { ColorThemeKeys, FontSizes, FontTypesAndWeights, FontVariantsAndWeights } from "types";
 
 export type TextProps = RNTextProps & {

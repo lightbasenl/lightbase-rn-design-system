@@ -1,9 +1,9 @@
-import type { BoxProps } from "primitives/Box/Box";
-import type { MarginStyles, PaddingStyles, RadiusStyles } from "types";
-import mapValues from "lodash.mapvalues";
-import type { StyleProp } from "react-native";
 import { useInternalTheme } from "hooks/useInternalTheme";
+import mapValues from "lodash.mapvalues";
+import type { BoxProps } from "primitives/Box/Box";
+import type { StyleProp } from "react-native";
 import { mapMarginValue, mapPaddingValues } from "tools/mapValues";
+import type { MarginStyles, PaddingStyles, RadiusStyles } from "types";
 
 export type RemoveStyles<T> = Omit<T, "contentContainerStyle" | "style">;
 export type FilterStyles<T> = StyleProp<

@@ -1,8 +1,9 @@
 import { useInternalTheme } from "hooks/useInternalTheme";
-import type { SpaceKey, Spacing } from "types";
-import { getValidChildren } from "tools/getValidChildren";
 import React, { Fragment, ReactElement, ReactNode } from "react";
 import type { ViewProps, ViewStyle } from "react-native";
+import { getValidChildren } from "tools/getValidChildren";
+import type { SpaceKey, Spacing } from "types";
+
 import { Box } from "./Box/Box";
 
 export const alignHorizontalToFlexAlign = {

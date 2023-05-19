@@ -1,7 +1,8 @@
 import React, { Fragment, isValidElement, ReactElement, ReactNode } from "react";
 import { getValidChildren } from "tools/getValidChildren";
-import { Box } from "./Box/Box";
 import type { Spacing } from "types";
+
+import { Box } from "./Box/Box";
 
 const alignHorizontalToFlexAlign = {
   center: "center",

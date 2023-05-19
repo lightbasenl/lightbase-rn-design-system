@@ -1,9 +1,10 @@
-import type { SpaceKey } from "types";
 import { useInternalTheme } from "hooks/useInternalTheme";
-import type { RemoveStyle } from "tools/useStyle";
 import mapValues from "lodash.mapvalues";
 import React from "react";
 import { View, ViewProps } from "react-native";
+import type { RemoveStyle } from "tools/useStyle";
+import type { SpaceKey } from "types";
+
 import type { BoxProps } from "./Box/Box";
 
 type BleedNumber = SpaceKey | { custom: number };

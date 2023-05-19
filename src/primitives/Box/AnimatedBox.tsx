@@ -1,9 +1,9 @@
+import { BackgroundContext } from "hooks/useBackgroundColor";
 import { BoxTokens, useResolveBoxTokens } from "hooks/useResolveBoxTokens";
-import type { RemoveStyle } from "tools/useStyle";
 import React, { forwardRef, useContext } from "react";
 import Animated from "react-native-reanimated";
 import type { SafeAreaViewProps } from "react-native-safe-area-context";
-import { BackgroundContext } from "hooks/useBackgroundColor";
+import type { RemoveStyle } from "tools/useStyle";
 
 // Make sure to use the default style prop to allow any animation
 export type BoxProps = RemoveStyle<BoxTokens> & SafeAreaViewProps;

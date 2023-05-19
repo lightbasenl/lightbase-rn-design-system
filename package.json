@@ -2,44 +2,18 @@
   "name": "lightbase-rn-design-system",
   "version": "0.1.0",
   "description": "test",
-  "main": "lib/commonjs/index",
+  "main": "lib/module/index",
   "module": "lib/module/index",
-  "types": "lib/typescript/index.d.ts",
   "react-native": "src/index",
   "source": "src/index",
-  "files": [
-    "src",
-    "lib",
-    "android",
-    "ios",
-    "cpp",
-    "*.podspec",
-    "!lib/typescript/example",
-    "!ios/build",
-    "!android/build",
-    "!android/gradle",
-    "!android/gradlew",
-    "!android/gradlew.bat",
-    "!android/local.properties",
-    "!**/__tests__",
-    "!**/__fixtures__",
-    "!**/__mocks__",
-    "!**/.*"
-  ],
+  "types": "lib/typescript/index.d.ts",
   "scripts": {
     "test": "jest",
     "typecheck": "tsc --noEmit",
     "lint": "eslint \"**/*.{js,ts,tsx}\"",
     "prepack": "bob build",
-    "release": "release-it",
-    "example": "yarn --cwd example",
-    "bootstrap": "yarn example && yarn install"
+    "release": "release-it"
   },
-  "keywords": [
-    "react-native",
-    "ios",
-    "android"
-  ],
   "repository": "https://github.com/lightbasenl/lightbase-rn-design-system",
   "author": "Oliver Winter <owinter86@gmail.com> (https://github.com/owinter86)",
   "license": "MIT",
@@ -50,59 +24,54 @@
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
+  "dependencies": {
+    "@capsizecss/core": "^3.1.0",
+    "@ctrl/tinycolor": "^3.6.0",
+    "expo": "^48.0.17",
+    "lodash.mapvalues": "^4.6.0",
+    "lodash.merge": "^4.6.2",
+    "react-keyed-flatten-children": "^1.3.0"
+  },
   "devDependencies": {
-    "@commitlint/config-conventional": "^17.0.2",
-    "@evilmartians/lefthook": "^1.2.2",
-    "@react-native-community/eslint-config": "^3.0.2",
-    "@react-navigation/bottom-tabs": "^6.5.5",
-    "@react-navigation/elements": "^1.3.15",
-    "@react-navigation/native": "^6.1.4",
-    "@react-navigation/native-stack": "^6.9.10",
+    "@commitlint/config-conventional": "^17.6.3",
+    "@react-navigation/bottom-tabs": "^6.5.7",
+    "@react-navigation/elements": "^1.3.17",
+    "@react-navigation/native": "^6.1.6",
+    "@react-navigation/native-stack": "^6.9.12",
     "@release-it/conventional-changelog": "^5.0.0",
-    "@types/jest": "^28.1.2",
     "@types/lodash.mapvalues": "^4.6.7",
     "@types/lodash.merge": "^4.6.7",
-    "@types/react": "~17.0.21",
-    "@types/react-native": "0.70.0",
+    "@types/react": "~18.0.27",
     "babel-plugin-module-resolver": "5.0.0",
-    "commitlint": "^17.0.2",
+    "commitlint": "^17.6.3",
     "del-cli": "^5.0.0",
-    "eslint": "^8.4.1",
-    "jest": "^28.1.1",
+    "eslint": "^8.40.0",
+    "eslint-config-universe": "^11.2.0",
     "pod-install": "^0.1.0",
-    "prettier": "^2.0.5",
-    "react": "18.1.0",
-    "react-native": "0.70.5",
-    "react-native-builder-bob": "^0.20.0",
+    "prettier": "^2.8.8",
+    "react": "18.2.0",
+    "react-native": "0.71.8",
+    "react-native-builder-bob": "^0.20.4",
     "react-native-reanimated": "^2.14.4",
-    "react-native-safe-area-context": "^4.5.0",
-    "release-it": "^15.0.0",
-    "typescript": "^4.5.2"
-  },
-  "resolutions": {
-    "@types/react": "17.0.21"
+    "react-native-safe-area-context": "4.5.0",
+    "release-it": "^15.10.3",
+    "typescript": "^4.9.4"
   },
   "peerDependencies": {
     "@react-navigation/bottom-tabs": "*",
     "@react-navigation/elements": "*",
     "@react-navigation/native": "*",
     "@react-navigation/native-stack": "*",
+    "expo": "*",
     "react": "*",
     "react-native": "*",
     "react-native-reanimated": "*",
     "react-native-safe-area-context": "*"
   },
   "engines": {
-    "node": ">= 16.0.0"
+    "node": ">= 18.0.0"
   },
   "packageManager": "^yarn@1.22.15",
-  "jest": {
-    "preset": "react-native",
-    "modulePathIgnorePatterns": [
-      "<rootDir>/example/node_modules",
-      "<rootDir>/lib/"
-    ]
-  },
   "commitlint": {
     "extends": [
       "@commitlint/config-conventional"
@@ -125,98 +94,17 @@
       }
     }
   },
-  "eslintConfig": {
-    "root": true,
-    "extends": [
-      "@react-native-community",
-      "plugin:prettier/recommended"
-    ],
-    "env": {
-      "jest": true,
-      "browser": true
-    },
-    "ignorePatterns": [
-      "**/generated/**"
-    ],
-    "rules": {
-      "react/no-unstable-nested-components": [
-        "error",
-        {
-          "allowAsProps": true
-        }
-      ],
-      "curly": "warn",
-      "eslint-comments/no-unused-disable": "off",
-      "@typescript-eslint/no-unused-vars": [
-        "warn",
-        {
-          "vars": "all",
-          "args": "after-used",
-          "argsIgnorePattern": "^_",
-          "ignoreRestSiblings": true
-        }
-      ],
-      "react/jsx-no-leaked-render": [
-        "error",
-        {
-          "validStrategies": [
-            "ternary",
-            "coerce"
-          ]
-        }
-      ],
-      "react-native/no-inline-styles": "off",
-      "react/react-in-jsx-scope": "off",
-      "react-hooks/exhaustive-deps": [
-        "warn",
-        {
-          "enableDangerousAutofixThisMayCauseInfiniteLoops": true,
-          "additionalHooks": "(useAnimatedStyle|useAnimatedProps|useDerivedValue|useAnimatedGestureHandler|useStyle)"
-        }
-      ],
-      "object-shorthand": [
-        "warn",
-        "always"
-      ],
-      "react/jsx-curly-brace-presence": [
-        "error",
-        {
-          "props": "never",
-          "children": "never"
-        }
-      ]
-    }
-  },
-  "eslintIgnore": [
-    "node_modules/",
-    "lib/"
-  ],
-  "prettier": {
-    "printWidth": 110,
-    "tabWidth": 2,
-    "singleQuote": false,
-    "trailingComma": "es5",
-    "arrowParens": "always"
-  },
   "react-native-builder-bob": {
     "source": "src",
     "output": "lib",
     "targets": [
-      "commonjs",
       "module",
       [
         "typescript",
         {
-          "project": "tsconfig.build.json"
+          "project": "tsconfig.json"
         }
       ]
     ]
-  },
-  "dependencies": {
-    "@capsizecss/core": "^3.1.0",
-    "@ctrl/tinycolor": "^3.6.0",
-    "lodash.mapvalues": "^4.6.0",
-    "lodash.merge": "^4.6.2",
-    "react-keyed-flatten-children": "^1.3.0"
   }
 }

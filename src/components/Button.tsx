@@ -1,8 +1,14 @@
-import { ActivityIndicator, Pressable, PressableProps, PressableStateCallbackType } from "react-native";
-import { Text, TextProps } from "./Text";
+import tinycolor from "@ctrl/tinycolor";
+import { useBackgroundColor } from "hooks/useBackgroundColor";
+import { useInternalTheme } from "hooks/useInternalTheme";
+import { AlignmentValues, useResolveBoxTokens } from "hooks/useResolveBoxTokens";
+import { useResolveColorToken } from "hooks/useResolveColorToken";
+import { AnimatedBox } from "primitives/Box/AnimatedBox";
 import type { BoxProps } from "primitives/Box/Box";
+import { Row, RowProps } from "primitives/Row";
 import * as React from "react";
 import { createContext, useCallback, useContext, useMemo } from "react";
+import { ActivityIndicator, Pressable, PressableProps, PressableStateCallbackType } from "react-native";
 import {
   Easing,
   interpolate,
@@ -13,15 +19,10 @@ import {
   withTiming,
 } from "react-native-reanimated";
 import { getActiveColor } from "tools/colorUtils";
-import { useInternalTheme } from "hooks/useInternalTheme";
-import { Row, RowProps } from "primitives/Row";
-import { useBackgroundColor } from "hooks/useBackgroundColor";
-import { AnimatedBox } from "primitives/Box/AnimatedBox";
-import type { ColorThemeKeys } from "types";
-import { useResolveColorToken } from "hooks/useResolveColorToken";
 import { getButtonVariants } from "tools/getButtonVariants";
-import tinycolor from "@ctrl/tinycolor";
-import { AlignmentValues, useResolveBoxTokens } from "hooks/useResolveBoxTokens";
+import type { ColorThemeKeys } from "types";
+
+import { Text, TextProps } from "./Text";
 
 type OmittedBoxProps = Omit<BoxProps, keyof AlignmentValues | "style">;
 

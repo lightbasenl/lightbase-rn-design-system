@@ -5,6 +5,7 @@ import type {
   CreateTextVariantsExtends,
   CreateThemeConfigExtends,
 } from "types";
+
 import type { ButtonVariantProps } from "./getButtonVariants";
 
 export const createButtonVariantOverrides = <T extends Partial<ButtonVariantProps>>(variants: T) => variants;

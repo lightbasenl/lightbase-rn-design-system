@@ -1,3 +1,8 @@
+import { useInternalTheme } from "hooks/useInternalTheme";
+import mapValues from "lodash.mapvalues";
+import type { ReactNode } from "react";
+import type { StyleProp, ViewStyle } from "react-native";
+import { mapMarginValue, mapPaddingValues } from "tools/mapValues";
 import type {
   NegativeSpace,
   Spacing,
@@ -7,11 +12,6 @@ import type {
   ColorStyles,
   ColorThemeKeys,
 } from "types";
-import { useInternalTheme } from "hooks/useInternalTheme";
-import mapValues from "lodash.mapvalues";
-import type { ReactNode } from "react";
-import type { StyleProp, ViewStyle } from "react-native";
-import { mapMarginValue, mapPaddingValues } from "tools/mapValues";
 
 type BoxStyleTokens = SpacingStyles | RadiusStyles | ColorStyles | "shadow";
 type ViewStyleModded = StyleProp<Omit<ViewStyle, BoxStyleTokens>>;

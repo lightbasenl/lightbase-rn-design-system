@@ -1,5 +1,6 @@
 import { FontMetrics, precomputeValues } from "@capsizecss/core";
 import { PixelRatio, StyleProp, StyleSheet, TextStyle } from "react-native";
+
 import type { FontSizes, FontType, FontWeights, ThemeConfig } from "../types";
 
 const capsize = (options: Parameters<typeof precomputeValues>[0]) => {

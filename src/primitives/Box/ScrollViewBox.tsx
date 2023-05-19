@@ -1,3 +1,4 @@
+import { BackgroundContext } from "hooks/useBackgroundColor";
 import {
   FilterStyles,
   RemoveStyles,
@@ -6,7 +7,6 @@ import {
 } from "hooks/useResolveBoxListTokens";
 import React, { ForwardedRef, forwardRef, useContext } from "react";
 import { ScrollView, ScrollViewProps as RNScrollViewProps } from "react-native";
-import { BackgroundContext } from "hooks/useBackgroundColor";
 
 type ScrollViewProps = RemoveStyles<RNScrollViewProps> & {
   contentContainerStyle?: FilterStyles<RNScrollViewProps["contentContainerStyle"]>;
