@@ -11,7 +11,7 @@ export default function App() {
       </Row>
 
       <Stack space="20px">
-        <Box flex={1} backgroundColor="accent">
+        <Box flex={1} backgroundColor="acscent">
           <Text flex={1} variant="buttonLight" color="accent">
             Gelo
           </Text>

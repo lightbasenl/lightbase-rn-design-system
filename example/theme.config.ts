@@ -54,7 +54,6 @@ const colors = {
   "northTexasGreen.100": "#E4EEE7",
 };
 
-export type ThemeColors = typeof themeColors;
 export const themeColors = createThemeColors({
   light: {
     // General
@@ -112,7 +111,6 @@ export const themeColors = createThemeColors({
   // dark: {},
 });
 
-export type ThemeConfig = typeof themeConfig;
 const themeConfig = createThemeConfig({
   spacing: {
     "0px": 0,
@@ -177,7 +175,6 @@ const themeConfig = createThemeConfig({
   },
 });
 
-export type ButtonVariants = typeof buttonVariants;
 const buttonVariants = createButtonVariantOverrides({
   link: { paddingVertical: "5px", textVariant: "paragraph", textColor: "text-link" },
   icon: {
@@ -189,7 +186,6 @@ const buttonVariants = createButtonVariantOverrides({
   },
 });
 
-export type TextVariants = typeof textVariant;
 export const textVariant = createTextVariants({
   title: { size: "28px", family: "Montserrat", weight: "bold", color: "text-base" },
   h1: { size: "24px", family: "Montserrat", weight: "bold", color: "text-base" },
@@ -213,11 +209,8 @@ export const customTheme = createTheme({
   variants: { Text: textVariant, Button: buttonVariants },
 });
 
-// declare global {
-//   namespace LBDesignSystem {
-//     interface LBTextVariants extends TextVariants {}
-//     interface LBThemeConfig extends ThemeConfig {}
-//     interface LBThemeColors extends ThemeColors {}
-//     interface LBTheme extends CustomTheme {}
-//   }
-// }
+declare module "lightbase-rn-design-system" {
+  // overrides TamaguiCustomConfig so your custom types
+  // work everywhere you import `tamagui`
+  interface AppThemeconfig extends CustomTheme {}
+}
