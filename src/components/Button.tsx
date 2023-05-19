@@ -1,7 +1,7 @@
 import tinycolor from "@ctrl/tinycolor";
 import { useBackgroundColor } from "hooks/useBackgroundColor";
 import { useInternalTheme } from "hooks/useInternalTheme";
-import { AlignmentValues, useResolveBoxTokens } from "hooks/useResolveBoxTokens";
+import { useResolveBoxTokens } from "hooks/useResolveBoxTokens";
 import { useResolveColorToken } from "hooks/useResolveColorToken";
 import { AnimatedBox } from "primitives/Box/AnimatedBox";
 import type { BoxProps } from "primitives/Box/Box";
@@ -20,7 +20,7 @@ import {
 } from "react-native-reanimated";
 import { getActiveColor } from "tools/colorUtils";
 import { getButtonVariants } from "tools/getButtonVariants";
-import type { ColorThemeKeys } from "types";
+import type { AlignmentValues, ColorThemeKeys } from "types";
 
 import { Text, TextProps } from "./Text";
 

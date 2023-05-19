@@ -22,7 +22,7 @@ export type ScreenBaseProps = {
   absolutePositionedTabBar?: boolean;
 };
 
-type ScreenProps<T, S> = ScreenBaseProps &
+export type ScreenProps<T, S> = ScreenBaseProps &
   (
     | ({ as?: "View"; ref?: RefObject<View> } & BoxProps)
     | ({ as: "ScrollView"; ref?: RefObject<ScrollView> } & ScrollViewBoxProps)

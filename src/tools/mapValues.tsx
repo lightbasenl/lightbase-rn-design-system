@@ -1,5 +1,4 @@
-import type { MarginValues, PaddingValues } from "hooks/useResolveBoxTokens";
-import type { SpaceKey } from "types";
+import type { MarginValues, SpaceKey, PaddingValues } from "types";
 
 type ObjectMapper<T, U> = (value: T) => U;
 

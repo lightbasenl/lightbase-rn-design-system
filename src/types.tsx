@@ -6,22 +6,6 @@ import type { BoxProps } from "primitives/Box/Box";
 import type { ViewStyle } from "react-native";
 import type { ButtonVariantProps } from "tools/getButtonVariants";
 
-export type TextVariants = LBDesignSystem.LBTextVariants extends CreateTextVariantsExtends
-  ? LBDesignSystem.LBTextVariants
-  : CreateTextVariantsExtends;
-
-export type ThemeConfig = LBDesignSystem.LBThemeConfig extends CreateThemeConfigExtends
-  ? LBDesignSystem.LBThemeConfig
-  : CreateThemeConfigExtends;
-
-export type ThemeColors = LBDesignSystem.LBThemeColors extends CreateThemeColors<string>
-  ? LBDesignSystem.LBThemeColors
-  : CreateThemeColors<string>;
-
-export type Theme = LBDesignSystem.LBTheme extends CreateThemeExtends
-  ? LBDesignSystem.LBTheme
-  : CreateThemeExtends;
-
 declare global {
   namespace LBDesignSystem {
     interface LBTextVariants {}
@@ -30,6 +14,20 @@ declare global {
     interface LBTheme {}
   }
 }
+
+export type TextVariants = keyof LBDesignSystem.LBTextVariants extends never
+  ? CreateTextVariantsExtends
+  : LBDesignSystem.LBTextVariants;
+
+export type ThemeConfig = keyof LBDesignSystem.LBThemeConfig extends never
+  ? CreateThemeConfigExtends
+  : LBDesignSystem.LBThemeConfig;
+
+export type ThemeColors = keyof LBDesignSystem.LBThemeColors extends never
+  ? CreateThemeColors<string>
+  : LBDesignSystem.LBThemeColors;
+
+export type Theme = keyof LBDesignSystem.LBTheme extends never ? CreateThemeExtends : LBDesignSystem.LBTheme;
 
 export type CreateThemeConfigExtends = {
   spacing: Record<string, number>;
@@ -173,3 +171,71 @@ export type FontVariants<T extends string = never, S extends any = never> = T ex
 export type FontVariantsAndWeights = {
   [T in keyof TextVariants]: FontVariants<T, keyof FontSpecificWeights[TextVariants[T]["family"]]>;
 }[keyof TextVariants];
+
+export type MarginValues = {
+  margin?: NegativeSpace;
+  marginBottom?: NegativeSpace;
+  marginHorizontal?: NegativeSpace;
+  marginLeft?: NegativeSpace;
+  marginRight?: NegativeSpace;
+  marginTop?: NegativeSpace;
+  marginVertical?: NegativeSpace;
+};
+export type ColorValues = {
+  backgroundColor?: ColorThemeKeys;
+  borderBottomColor?: ColorThemeKeys;
+  borderColor?: ColorThemeKeys;
+  borderLeftColor?: ColorThemeKeys;
+  borderRightColor?: ColorThemeKeys;
+  borderTopColor?: ColorThemeKeys;
+};
+export type BorderRadiusValues = {
+  borderBottomLeftRadius?: Radius;
+  borderBottomRadius?: Radius;
+  borderBottomRightRadius?: Radius;
+  borderLeftRadius?: Radius;
+  borderRadius?: Radius;
+  borderRightRadius?: Radius;
+  borderTopLeftRadius?: Radius;
+  borderTopRadius?: Radius;
+  borderTopRightRadius?: Radius;
+};
+export type PaddingValues = {
+  padding?: Spacing;
+  paddingBottom?: Spacing;
+  paddingHorizontal?: Spacing;
+  paddingLeft?: Spacing;
+  paddingRight?: Spacing;
+  paddingTop?: Spacing;
+  paddingVertical?: Spacing;
+};
+export type BorderValues = {
+  borderBottomWidth?: number;
+  borderLeftWidth?: number;
+  borderRightWidth?: number;
+  borderTopWidth?: number;
+  borderWidth?: number;
+};
+export type AlignmentValues = {
+  flex?: number;
+  alignItems?: ViewStyle["alignItems"];
+  alignSelf?: ViewStyle["alignSelf"];
+  flexDirection?: ViewStyle["flexDirection"];
+  flexWrap?: ViewStyle["flexWrap"];
+  justifyContent?: ViewStyle["justifyContent"];
+};
+
+export { BleedProps } from "./primitives/Bleed";
+export { RowProps } from "./primitives/Row";
+export { StackProps } from "./primitives/Stack";
+export { AnimatedBoxProps } from "./primitives/Box/AnimatedBox";
+export { AnimatedFlatListBoxProps } from "./primitives/Box/AnimatedFlatListBox";
+export { AnimatedScrollViewBoxProps } from "./primitives/Box/AnimatedScrollViewBox";
+export { BoxProps } from "./primitives/Box/Box";
+export { FlatListBoxProps } from "./primitives/Box/FlatListBox";
+export { SafeAreaBoxProps } from "./primitives/Box/SafeAreaBox";
+export { ScrollViewBoxProps } from "./primitives/Box/ScrollViewBox";
+export { SectionListBoxProps } from "./primitives/Box/SectionListBox";
+export { ButtonProps } from "./components/Button";
+export { TextProps } from "./components/Text";
+export { ScreenProps } from "./components/Screen";

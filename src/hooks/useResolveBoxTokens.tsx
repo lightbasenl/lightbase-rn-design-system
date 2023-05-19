@@ -3,70 +3,19 @@ import { ReactNode } from "react";
 import { StyleProp, ViewStyle } from "react-native";
 import { mapMarginValue, mapPaddingValues, mapValues } from "tools/mapValues";
 import {
-  NegativeSpace,
-  Spacing,
   SpacingStyles,
   RadiusStyles,
-  Radius,
   ColorStyles,
-  ColorThemeKeys,
+  MarginValues,
+  ColorValues,
+  BorderRadiusValues,
+  PaddingValues,
+  BorderValues,
+  AlignmentValues,
 } from "types";
 
 type BoxStyleTokens = SpacingStyles | RadiusStyles | ColorStyles | "shadow";
 type ViewStyleModded = StyleProp<Omit<ViewStyle, BoxStyleTokens>>;
-
-export type MarginValues = {
-  margin?: NegativeSpace;
-  marginBottom?: NegativeSpace;
-  marginHorizontal?: NegativeSpace;
-  marginLeft?: NegativeSpace;
-  marginRight?: NegativeSpace;
-  marginTop?: NegativeSpace;
-  marginVertical?: NegativeSpace;
-};
-export type ColorValues = {
-  backgroundColor?: ColorThemeKeys;
-  borderBottomColor?: ColorThemeKeys;
-  borderColor?: ColorThemeKeys;
-  borderLeftColor?: ColorThemeKeys;
-  borderRightColor?: ColorThemeKeys;
-  borderTopColor?: ColorThemeKeys;
-};
-export type BorderRadiusValues = {
-  borderBottomLeftRadius?: Radius;
-  borderBottomRadius?: Radius;
-  borderBottomRightRadius?: Radius;
-  borderLeftRadius?: Radius;
-  borderRadius?: Radius;
-  borderRightRadius?: Radius;
-  borderTopLeftRadius?: Radius;
-  borderTopRadius?: Radius;
-  borderTopRightRadius?: Radius;
-};
-export type PaddingValues = {
-  padding?: Spacing;
-  paddingBottom?: Spacing;
-  paddingHorizontal?: Spacing;
-  paddingLeft?: Spacing;
-  paddingRight?: Spacing;
-  paddingTop?: Spacing;
-  paddingVertical?: Spacing;
-};
-export type BorderValues = {
-  borderBottomWidth?: number;
-  borderLeftWidth?: number;
-  borderRightWidth?: number;
-  borderTopWidth?: number;
-  borderWidth?: number;
-};
-export type AlignmentValues = {
-  flex?: number;
-  alignItems?: ViewStyle["alignItems"];
-  alignSelf?: ViewStyle["alignSelf"];
-  flexDirection?: ViewStyle["flexDirection"];
-  flexWrap?: ViewStyle["flexWrap"];
-  justifyContent?: ViewStyle["justifyContent"];
-};
 
 export type BoxTokens = {
   style?: ViewStyleModded;

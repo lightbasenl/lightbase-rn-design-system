@@ -2,7 +2,7 @@
   "name": "lightbase-rn-design-system",
   "version": "0.1.4",
   "description": "test",
-  "main": "lib/module/index",
+  "main": "lib/commonjs/index.js",
   "module": "lib/module/index",
   "react-native": "src/index",
   "source": "src/index",
@@ -94,11 +94,12 @@
     "source": "src",
     "output": "lib",
     "targets": [
+      "commonjs",
       "module",
       [
         "typescript",
         {
-          "project": "tsconfig.json"
+          "project": "tsconfig.build.json"
         }
       ]
     ]

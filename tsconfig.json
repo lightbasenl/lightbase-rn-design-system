@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
-    "baseUrl": "./",
-    "paths" : {
-        "*" : ["src/*"]
+    "baseUrl": "./src",
+    "paths": {
+      "lightbase-rn-design-system": ["../src/index"]
     },
     "declaration": true,
     "preserveSymlinks": true,
