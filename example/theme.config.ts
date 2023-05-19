@@ -213,11 +213,9 @@ export const customTheme = createTheme({
   variants: { Text: textVariant, Button: buttonVariants },
 });
 
-// declare global {
-//   namespace LBDesignSystem {
-//     interface LBTextVariants extends TextVariants {}
-//     interface LBThemeConfig extends ThemeConfig {}
-//     interface LBThemeColors extends ThemeColors {}
-//     interface LBTheme extends CustomTheme {}
-//   }
-// }
+declare module "lightbase-rn-design-system" {
+  interface LBTextVariants extends TextVariants {}
+  interface LBThemeConfig extends ThemeConfig {}
+  interface LBThemeColors extends ThemeColors {}
+  interface LBTheme extends CustomTheme {}
+}

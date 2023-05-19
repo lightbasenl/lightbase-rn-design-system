@@ -6,28 +6,15 @@ import type { BoxProps } from "primitives/Box/Box";
 import type { ViewStyle } from "react-native";
 import type { ButtonVariantProps } from "tools/getButtonVariants";
 
-declare global {
-  namespace LBDesignSystem {
-    interface LBTextVariants {}
-    interface LBThemeConfig {}
-    interface LBThemeColors {}
-    interface LBTheme {}
-  }
-}
+export interface LBTextVariants {}
+export interface LBThemeConfig {}
+export interface LBThemeColors {}
+export interface LBTheme {}
 
-export type TextVariants = keyof LBDesignSystem.LBTextVariants extends never
-  ? CreateTextVariantsExtends
-  : LBDesignSystem.LBTextVariants;
-
-export type ThemeConfig = keyof LBDesignSystem.LBThemeConfig extends never
-  ? CreateThemeConfigExtends
-  : LBDesignSystem.LBThemeConfig;
-
-export type ThemeColors = keyof LBDesignSystem.LBThemeColors extends never
-  ? CreateThemeColors<string>
-  : LBDesignSystem.LBThemeColors;
-
-export type Theme = keyof LBDesignSystem.LBTheme extends never ? CreateThemeExtends : LBDesignSystem.LBTheme;
+export type TextVariants = keyof LBTextVariants extends never ? CreateTextVariantsExtends : LBTextVariants;
+export type ThemeConfig = keyof LBThemeConfig extends never ? CreateThemeConfigExtends : LBThemeConfig;
+export type ThemeColors = keyof LBThemeColors extends never ? CreateThemeColors<string> : LBThemeColors;
+export type Theme = keyof LBTheme extends never ? CreateThemeExtends : LBTheme;
 
 export type CreateThemeConfigExtends = {
   spacing: Record<string, number>;
