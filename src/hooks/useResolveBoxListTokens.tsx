@@ -1,8 +1,7 @@
 import { useInternalTheme } from "hooks/useInternalTheme";
-import mapValues from "lodash.mapvalues";
 import { BoxProps } from "primitives/Box/Box";
 import { StyleProp } from "react-native";
-import { mapMarginValue, mapPaddingValues } from "tools/mapValues";
+import { mapMarginValue, mapPaddingValues, mapValues } from "tools/mapValues";
 import { MarginStyles, PaddingStyles, RadiusStyles } from "types";
 
 export type RemoveStyles<T> = Omit<T, "contentContainerStyle" | "style">;

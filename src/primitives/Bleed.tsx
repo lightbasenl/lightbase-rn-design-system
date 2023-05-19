@@ -1,7 +1,7 @@
 import { useInternalTheme } from "hooks/useInternalTheme";
-import mapValues from "lodash.mapvalues";
 import React from "react";
 import { View, ViewProps } from "react-native";
+import { mapValues } from "tools/mapValues";
 import { RemoveStyle } from "tools/useStyle";
 import { SpaceKey } from "types";
 

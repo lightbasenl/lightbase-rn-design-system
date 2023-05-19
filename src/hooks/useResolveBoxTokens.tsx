@@ -1,8 +1,7 @@
 import { useInternalTheme } from "hooks/useInternalTheme";
-import mapValues from "lodash.mapvalues";
 import { ReactNode } from "react";
 import { StyleProp, ViewStyle } from "react-native";
-import { mapMarginValue, mapPaddingValues } from "tools/mapValues";
+import { mapMarginValue, mapPaddingValues, mapValues } from "tools/mapValues";
 import {
   NegativeSpace,
   Spacing,

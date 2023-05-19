@@ -1,19 +1,19 @@
 import tinycolor from "@ctrl/tinycolor";
 import { ButtonProps, Variants } from "components/Button";
 import { TextProps } from "components/Text";
-import { merge } from "lodash";
 import { ColorThemeKeys, DefaultButton } from "types";
+
+import { mergeDeepRight } from "./merge";
 
 export type ButtonVariants = "solid" | "soft" | "outline" | "link" | "icon" | "unstyled";
 
-export type ButtonVariantProps = Record<
-  ButtonVariants,
-  Partial<ButtonProps> & {
-    backgroundColor?: ColorThemeKeys;
-    borderColor?: ColorThemeKeys;
-    textVariant?: TextProps["variant"];
-  }
->;
+type ButtonVariantType = Partial<ButtonProps> & {
+  backgroundColor?: ColorThemeKeys;
+  borderColor?: ColorThemeKeys;
+  textVariant?: TextProps["variant"];
+};
+
+export type ButtonVariantProps = Record<ButtonVariants, ButtonVariantType>;
 
 type Props = {
   themeColor: ColorThemeKeys;
@@ -76,6 +76,9 @@ export function getButtonVariants({
       onPressColor: { custom: "transparent" },
     },
   };
-  const defaults = merge({}, defaultProps, variants[variant]);
-  return merge({}, defaults, overrides[variant]);
+  return mergeDeepRight<Omit<ButtonVariantType, "children">>(
+    defaultProps,
+    variants[variant],
+    overrides[variant] ?? {}
+  );
 }

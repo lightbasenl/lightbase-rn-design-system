@@ -1,6 +1,22 @@
 import type { MarginValues, PaddingValues } from "hooks/useResolveBoxTokens";
-import mapValues from "lodash.mapvalues";
 import type { SpaceKey } from "types";
+
+type ObjectMapper<T, U> = (value: T) => U;
+
+export function mapValues<T extends object, U>(
+  object: T,
+  mapper: ObjectMapper<T[keyof T], U>
+): { [K in keyof T]: U } {
+  const result = {} as { [K in keyof T]: U };
+
+  for (const key in object) {
+    if (Object.prototype.hasOwnProperty.call(object, key)) {
+      result[key] = mapper(object[key]);
+    }
+  }
+
+  return result;
+}
 
 export const mapMarginValue = (margins: MarginValues, spacingConfig: Record<string, number>) =>
   mapValues(margins, (value) => {
